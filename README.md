@@ -13,8 +13,6 @@
 最终通过动态优化模型提升组合的风险收益表现。
 
 
----
-
 # 1. Project Overview
 
 
@@ -108,13 +106,13 @@ Performance Evaluation
 所有数据经过清洗、日期统一和格式转换后用于后续建模。
 
 
-# 4. 因子体系
+# 4. Factors
 
 项目基于 CSI 800 股票池构建多因子模型，并通过 ICIR（Information Coefficient Information Ratio）动态调整不同因子的组合权重。
 
 最终模型保留三个核心因子：
 
-## 4.1 Momentum 动量因子
+## 4.1 Momentum
 
 用于捕捉股票价格趋势和历史收益表现。
 
@@ -128,7 +126,7 @@ Performance Evaluation
 momentum_z
 
 
-## 4.2 Low Volatility 低波动因子
+## 4.2 Low Volatility
 
 用于衡量股票风险特征，筛选收益更加稳定的股票。
 
@@ -142,7 +140,7 @@ momentum_z
 low_volatility_z
 
 
-## 4.3 Quality 质量因子
+## 4.3 Quality
 
 用于衡量企业基本面质量。
 
@@ -292,7 +290,7 @@ Portfolio Score
 
 
 | Metric | V1 | V14 |
-| --- | ---: | ---: |
+| --- | :---: | :---: |
 | Total Return | 2.79 | 3.62 |
 | Annual Return | 15.39% | 17.87% |
 | Volatility | 18.75% | 10.41% |
@@ -451,9 +449,10 @@ final_performance_comparison.csv
 
 ![Drawdown](figures/drawdown.png)
 
-最终策略滚动夏普比率：
 
-![Rolling Sharpe Ratio](reports/figures/rolling_sharpe.png)
+最终策略与初始策略回撤对比：
+
+![V1 vs V14 Drawdown](reports/figures/v1_vs_v14_drawdown.png)
 
 
 ## V1 vs V14 Comparison
@@ -462,11 +461,6 @@ final_performance_comparison.csv
 性能指标对比：
 
 ![V1 vs V14 Metrics](reports/figures/v1_vs_v14_metrics.png)
-
-
-回撤对比：
-
-![V1 vs V14 Drawdown](reports/figures/v1_vs_v14_drawdown.png)
 
 
 ## Rolling Sharpe Ratio
