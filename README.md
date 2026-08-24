@@ -243,10 +243,9 @@ Portfolio Score
 
 # 8. Dynamic Optimizer
 
+本项目采用迭代式量化研究流程，通过多个策略版本逐步优化模型表现。
 
-在基础动态组合模型基础上，引入自适应风险优化模块，通过市场风险状态识别动态调整组合风险暴露。
-
-主要优化方向：
+初始版本基于静态多因子评分模型，随后逐步引入以下主要优化方向：
 
 ## Volatility Targeting
 
@@ -262,9 +261,11 @@ Portfolio Score
 
 ## Dynamic Exposure Adjustment
 
-综合波动率、回撤和趋势信息，生成动态仓位系数，实现风险暴露自适应调整。
+综合多元信息，生成动态仓位系数，实现风险暴露自适应调整。
 
-最终形成 Dynamic Optimizer V14：
+不同版本通过统一回测框架进行评估，并根据收益、波动率、夏普比率和最大回撤等指标持续优化。
+
+最终形成 Dynamic Optimizer V14 版本：
 
 - Volatility Targeting
 - Drawdown Control
@@ -287,7 +288,7 @@ Portfolio Score
 | Max Drawdown | -34.25% | -13.77% |
 
 
-相比基础版本：
+相比初始版本：
 
 - 收益能力提升
 - 波动率明显降低
@@ -298,7 +299,7 @@ Portfolio Score
 # 10. Benchmark Comparison
 
 
-最终策略与 CSI800 Benchmark 进行比较。
+将最终策略与 CSI800 Benchmark 进行比较。
 
 
 评价指标：
