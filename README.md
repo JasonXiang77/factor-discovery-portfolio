@@ -244,31 +244,25 @@ Portfolio Score
 # 8. Dynamic Optimizer
 
 
-在基础动态组合基础上，引入风险优化模块。
-
+在基础动态组合模型基础上，引入自适应风险优化模块，通过市场风险状态识别动态调整组合风险暴露。
 
 主要优化方向：
 
+## Volatility Targeting
 
-## Volatility Control
-
-根据市场波动情况调整风险暴露。
-
+根据历史实现波动率动态调整投资暴露，使组合风险水平接近目标波动率。
 
 ## Drawdown Control
 
-根据历史回撤控制仓位。
-
+基于组合历史最大回撤状态识别风险压力，在极端回撤环境下降低风险暴露。
 
 ## Trend Filter
 
-结合市场趋势状态调整组合风险。
-
+结合短中期趋势信号判断市场状态，动态调整组合风险偏好。
 
 ## Dynamic Exposure Adjustment
 
-根据风险状态动态调整投资暴露。
-
+综合波动率、回撤和趋势信息，生成动态仓位系数，实现风险暴露自适应调整。
 
 最终形成 Dynamic Optimizer V14：
 
@@ -432,7 +426,7 @@ final_performance_comparison.csv
 ## Strategy Performance Comparison
 
 
-最终策略、基准策略与基准净值曲线：
+最终策略、初始策略与基准净值曲线：
 
 ![Performance Comparison](figures/performance_comparison.png)
 
