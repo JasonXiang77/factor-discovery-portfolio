@@ -182,14 +182,42 @@ dynamic_icir_score
 - 因子稳定性
 - 因子方向有效性
 
+通过滚动 ICIR 衡量因子在不同市场阶段的有效性变化。
+
 
 输出：
 
 - `ic_summary.csv`
 - `factor_direction_check.parquet`
+- `rolling_icir_curve.png`
 
 
-# 6. Dynamic Factor Weighting
+# 6. Strategy Validation
+
+为了进一步验证动态组合评分的有效性，本项目对最终生成的 dynamic_icir_score 进行预测能力分析。
+
+采用横截面 IC 方法计算每日股票评分与未来收益之间的相关性。
+
+评价指标：
+
+- IC Mean
+- IC Std
+- ICIR
+- Positive IC Ratio
+
+最终策略 IC 结果：
+
+| Metric | Value |
+| --- | :---: |
+| IC Mean | 0.0314 |
+| IC Std | 0.1510 |
+| ICIR | 0.2079 |
+| Positive IC Ratio | 60.46% |
+
+同时绘制累计 IC 曲线和滚动 ICIR 曲线，用于观察策略预测能力稳定性。
+
+
+# 7. Dynamic Factor Weighting
 
 
 相比固定权重模型，本项目根据因子历史表现动态调整权重。
@@ -218,10 +246,7 @@ Portfolio Score
 ```
 
 
-动态权重机制使组合能够适应不同市场环境下因子有效性的变化。
-
-
-# 7. Portfolio Construction
+# 8. Portfolio Construction
 
 
 每月最后一个交易日按照 dynamic_icir_score 对 CSI800 股票进行横截面排序，选择 Top 100 股票构建等权投资组合。
@@ -241,9 +266,9 @@ Portfolio Score
 - 权重归一化
 
 
-# 8. Dynamic Optimizer
+# 9. Dynamic Optimizer
 
-本项目采用迭代式量化研究流程，通过多个策略版本逐步优化模型表现。
+本项目采用迭代式量化研究流程，模型通过 V1-V14 多版本迭代优化逐步演进，每个版本在统一回测框架下比较风险收益指标，最终选择综合表现最佳的 V14 策略。
 
 初始版本基于静态多因子评分模型，随后逐步引入以下主要优化方向：
 
@@ -273,7 +298,7 @@ Portfolio Score
 - Dynamic Exposure Adjustment
 
 
-# 9. Performance Evaluation
+# 10. Performance Evaluation
 
 
 ## V1 vs V14
@@ -296,7 +321,7 @@ Portfolio Score
 - Sharpe Ratio 提升
 
 
-# 10. Benchmark Comparison
+# 11. Benchmark Comparison
 
 
 将最终策略与 CSI800 Benchmark 进行比较。
@@ -314,7 +339,7 @@ Portfolio Score
 动态优化策略在回测周期内具有更优的风险调整收益表现。
 
 
-# 11. Project Structure
+# 12. Project Structure
 
 
 ```
@@ -329,8 +354,8 @@ factor-discovery-portfolio/
 │
 ├── scripts/
 │   ├── build_multifactor_v2.py
-│   ├── evaluate_strategy_ic.py
 │   ├── build_dynamic_portfolio.py
+│   ├── evaluate_strategy_ic.py
 │   ├── backtest_dynamic_optimizer_v14.py
 │   ├── evaluate_performance.py
 │   └── plot_final_comparison.py
@@ -343,7 +368,7 @@ factor-discovery-portfolio/
 ```
 
 
-# 12. Environment
+# 13. Environment
 
 项目使用 uv 管理 Python 环境。
 
@@ -371,7 +396,7 @@ tushare
 ```
 
 
-# 13. Running
+# 14. Running
 
 
 ## Factor Construction
@@ -404,7 +429,7 @@ python scripts/plot_final_comparison.py
 ```
 
 
-# 14. Outputs
+# 15. Outputs
 
 
 主要结果文件：
@@ -421,7 +446,7 @@ final_performance_comparison.csv
 ```
 
 
-# 15. Visualization
+# 16. Visualization
 
 
 ## Strategy Performance Comparison
@@ -432,25 +457,17 @@ final_performance_comparison.csv
 ![Performance Comparison](figures/performance_comparison.png)
 
 
-## Drawdown Analysis
-
-
-最终策略历史回撤表现：
-
-![Drawdown](figures/drawdown.png)
-
-
-最终策略与初始策略回撤对比：
-
-![V1 vs V14 Drawdown](reports/figures/v1_vs_v14_drawdown.png)
-
-
 ## V1 vs V14 Comparison
 
 
 最终策略与初始策略性能指标对比：
 
 ![V1 vs V14 Metrics](reports/figures/v1_vs_v14_metrics.png)
+
+
+最终策略与初始策略回撤对比：
+
+![V1 vs V14 Drawdown](reports/figures/v1_vs_v14_drawdown.png)
 
 
 ## Rolling Sharpe Ratio
