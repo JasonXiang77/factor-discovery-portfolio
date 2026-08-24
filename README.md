@@ -224,13 +224,13 @@ Portfolio Score
 # 7. Portfolio Construction
 
 
-每日按照 dynamic_icir_score 排序，选择 Top 100 股票构建组合。
+每月最后一个交易日按照 dynamic_icir_score 对 CSI800 股票进行横截面排序，选择 Top 100 股票构建等权投资组合。
 
 主要步骤：
 
 1. 股票动态评分排序
 2. 选择高评分股票
-3. 根据优化评分分配权重
+3. 平均分配权重
 4. 计算组合收益
 
 
@@ -329,8 +329,8 @@ factor-discovery-portfolio/
 │
 ├── scripts/
 │   ├── build_multifactor_v2.py
-│   ├── build_portfolio.py
-│   ├── backtest_dynamic_optimizer.py
+│   ├── build_dynamic_portfolio.py
+│   ├── backtest_dynamic_optimizer_v14.py
 │   ├── evaluate_performance.py
 │   └── plot_final_comparison.py
 │
