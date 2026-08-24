@@ -365,8 +365,9 @@ scipy
 scikit-learn
 matplotlib
 pyarrow
-tushare
 baostock
+akshare
+tushare
 ```
 
 
@@ -447,7 +448,7 @@ final_performance_comparison.csv
 ## V1 vs V14 Comparison
 
 
-性能指标对比：
+最终策略与初始策略性能指标对比：
 
 ![V1 vs V14 Metrics](reports/figures/v1_vs_v14_metrics.png)
 
