@@ -159,7 +159,7 @@ quality_z
 
 Dynamic Score:
 
-dynamic_icir_score = momentum_z × momentum_z_weight + low_volatility_z × low_volatility_z_weight + quality_z × quality_z_weight
+momentum_z × momentum_z_weight + low_volatility_z × low_volatility_z_weight + quality_z × quality_z_weight
 
 
 最终生成每日股票动态评分：
