@@ -329,6 +329,7 @@ factor-discovery-portfolio/
 │
 ├── scripts/
 │   ├── build_multifactor_v2.py
+│   ├── evaluate_strategy_ic.py
 │   ├── build_dynamic_portfolio.py
 │   ├── backtest_dynamic_optimizer_v14.py
 │   ├── evaluate_performance.py
@@ -337,8 +338,6 @@ factor-discovery-portfolio/
 ├── reports/
 │
 ├── figures/
-│
-├── notebooks/
 │
 └── README.md
 ```
@@ -456,6 +455,33 @@ final_performance_comparison.csv
 
 ## Rolling Sharpe Ratio
 
+
 最终策略滚动夏普比率：
 
 ![Rolling Sharpe](reports/figures/rolling_sharpe.png)
+
+
+## Strategy IC Analysis
+
+### Cumulative IC Curve
+
+
+动态因子信号的累计 IC 变化趋势：
+
+![Cumulative IC](figures/cumulative_ic_curve.png)
+
+
+### IC Distribution
+
+
+每日 IC 值的分布情况：
+
+![IC Distribution](figures/ic_distribution.png)
+
+
+### Rolling ICIR
+
+
+ 60 日滚动 ICIR 变化情况：
+
+![Rolling ICIR](figures/rolling_icir.png)
